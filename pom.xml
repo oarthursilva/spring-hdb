@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+
+  <parent>
+    <groupId>com.sap.jpa</groupId>
+    <artifactId>hdb-root</artifactId>
+    <version>1.0.0</version>
+    <relativePath>parent</relativePath>
+  </parent>
+
+  <artifactId>hdb</artifactId>
+  <version>1.0.0</version>
+  <name>hdb</name>
+  <description>JPA HANA Persistence</description>
+
+  <properties>
+    <java.version>11</java.version>
+
+    <!-- dependencies -->
+    <version.lombok>1.18.22</version.lombok>
+    <version.sap-ngdbc>2.11.14</version.sap-ngdbc>
+    <version.java-cfenv-boot>2.4.0</version.java-cfenv-boot>
+  </properties>
+
+  <dependencies>
+    <!-- lombok -->
+    <dependency>
+      <groupId>org.projectlombok</groupId>
+      <artifactId>lombok</artifactId>
+      <version>${version.lombok}</version>
+      <optional>true</optional>
+    </dependency>
+
+    <!-- SAP -->
+    <dependency>
+      <groupId>com.sap.cloud.db.jdbc</groupId>
+      <artifactId>ngdbc</artifactId>
+      <version>${version.sap-ngdbc}</version>
+      <scope>provided</scope>
+    </dependency>
+
+    <!-- db -->
+    <dependency>
+      <groupId>org.postgresql</groupId>
+      <artifactId>postgresql</artifactId>
+      <scope>runtime</scope>
+    </dependency>
+
+    <!-- flyway -->
+    <dependency>
+      <groupId>org.flywaydb</groupId>
+      <artifactId>flyway-core</artifactId>
+    </dependency>
+
+    <!-- in-memory db -->
+    <dependency>
+      <groupId>com.h2database</groupId>
+      <artifactId>h2</artifactId>
+    </dependency>
+
+    <!-- pivotal -->
+    <dependency>
+      <groupId>io.pivotal.cfenv</groupId>
+      <artifactId>java-cfenv-boot</artifactId>
+      <version>${version.java-cfenv-boot}</version>
+    </dependency>
+
+  </dependencies>
+
+</project>
