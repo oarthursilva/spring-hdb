@@ -20,8 +20,6 @@
 
     <!-- dependencies -->
     <version.lombok>1.18.22</version.lombok>
-    <version.sap-ngdbc>2.11.14</version.sap-ngdbc>
-    <version.java-cfenv-boot>2.4.0</version.java-cfenv-boot>
   </properties>
 
   <dependencies>
@@ -31,40 +29,6 @@
       <artifactId>lombok</artifactId>
       <version>${version.lombok}</version>
       <optional>true</optional>
-    </dependency>
-
-    <!-- SAP -->
-    <dependency>
-      <groupId>com.sap.cloud.db.jdbc</groupId>
-      <artifactId>ngdbc</artifactId>
-      <version>${version.sap-ngdbc}</version>
-      <scope>provided</scope>
-    </dependency>
-
-    <!-- db -->
-    <dependency>
-      <groupId>org.postgresql</groupId>
-      <artifactId>postgresql</artifactId>
-      <scope>runtime</scope>
-    </dependency>
-
-    <!-- flyway -->
-    <dependency>
-      <groupId>org.flywaydb</groupId>
-      <artifactId>flyway-core</artifactId>
-    </dependency>
-
-    <!-- in-memory db -->
-    <dependency>
-      <groupId>com.h2database</groupId>
-      <artifactId>h2</artifactId>
-    </dependency>
-
-    <!-- pivotal -->
-    <dependency>
-      <groupId>io.pivotal.cfenv</groupId>
-      <artifactId>java-cfenv-boot</artifactId>
-      <version>${version.java-cfenv-boot}</version>
     </dependency>
 
   </dependencies>
