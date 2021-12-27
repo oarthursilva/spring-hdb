@@ -6,15 +6,17 @@ import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
-import lombok.*;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 @AllArgsConstructor
 @NoArgsConstructor
 @Getter
 @Setter
 @Entity
-@ToString
-@Table(name = "product")
+@Table(name = "com.sap.jpa.hana.tables::products")
 public class Product implements SerializableEntity {
 
   @Id

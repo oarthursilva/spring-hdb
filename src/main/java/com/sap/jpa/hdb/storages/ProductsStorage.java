@@ -2,12 +2,11 @@ package com.sap.jpa.hdb.storages;
 
 import java.util.List;
 
-import javax.transaction.Transactional;
-
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.sap.jpa.hdb.exceptions.HdbExceptions;
 import com.sap.jpa.hdb.exceptions.NoProductsException;
@@ -27,6 +26,7 @@ public class ProductsStorage {
     this.repository = repository;
   }
 
+  @Transactional(readOnly = true)
   public List<Product> getAll() throws NoProductsException {
     List<Product> productList = repository.findAll();
 

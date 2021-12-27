@@ -4,7 +4,11 @@ import java.util.Date;
 import java.util.UUID;
 
 import com.sap.jpa.hdb.model.entities.Product;
-import lombok.*;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+import lombok.ToString;
 
 @AllArgsConstructor
 @NoArgsConstructor

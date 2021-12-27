@@ -26,6 +26,7 @@
     <!-- dependencies -->
     <spring-cloud.version>2021.0.0</spring-cloud.version>
     <version.java-cfenv-jdbc>2.4.0</version.java-cfenv-jdbc>
+    <version.sap-ngdbc>2.11.14</version.sap-ngdbc>
 
     <!-- plugins -->
     <plugin.maven.compiler>3.8.1</plugin.maven.compiler>

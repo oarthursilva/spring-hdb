@@ -1,18 +1,18 @@
 package com.sap.jpa.hdb.services;
 
-import java.util.ArrayList;
-import java.util.List;
-
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
 import com.sap.jpa.hdb.exceptions.NoProductsException;
 import com.sap.jpa.hdb.model.dto.ProductDTO;
 import com.sap.jpa.hdb.model.dto.ProductsResponse;
 import com.sap.jpa.hdb.model.entities.Product;
 import com.sap.jpa.hdb.storages.ProductsStorage;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
+
+import java.util.ArrayList;
+import java.util.List;
 
 @Service
 public class ProductsService {
@@ -26,7 +26,6 @@ public class ProductsService {
     this.productsStorage = productsStorage;
   }
 
-  @Transactional(readOnly = true)
   public ProductsResponse handleRetrieveProducts() {
     try {
       List<Product> productList = productsStorage.getAll();
