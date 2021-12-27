@@ -1,0 +1,14 @@
+---
+applications:
+  - name: hdb-products
+    memory: 384M
+    path: target/hdb.jar
+    buildpacks:
+      - java_buildpack
+    env:
+      BUCKET:
+      JAVA_OPTS: "-XX:MaxDirectMemorySize=10M
+                  -XX:ReservedCodeCacheSize=15M"
+      JBP_CONFIG_OPEN_JDK_JRE: '[memory_calculator: {stack_threads: 4}, jre: {version: 11.+}]'
+    services:
+      - hdb-hdidb-ws-hlt22
