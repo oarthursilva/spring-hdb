@@ -11,4 +11,4 @@ applications:
                   -XX:ReservedCodeCacheSize=15M"
       JBP_CONFIG_OPEN_JDK_JRE: '[memory_calculator: {stack_threads: 4}, jre: {version: 11.+}]'
     services:
-      - hdb-hdidb-ws-hlt22
+      - hdb-products-db

@@ -17,6 +17,7 @@ import org.springframework.core.env.Profiles;
 import org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean;
 import org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter;
 
+import com.sap.jpa.hdb.config.db.constants.DatabaseConstants;
 import com.sap.jpa.hdb.config.db.enums.ProfilesEnum;
 import com.sap.jpa.hdb.config.db.exceptions.ProfileNotSupportedException;
 import com.sap.jpa.hdb.config.db.models.builder.DataSourceCreator;
@@ -42,7 +43,7 @@ public class DatabaseBean {
     this.environment = environment;
   }
 
-  @Bean(name = "dbWorker")
+  @Bean(name = DatabaseConstants.BEAN_DB_WORKER)
   public DBWorker defineDBWorker() {
     boolean isTestProfile = environment.acceptsProfiles(Profiles.of(ProfilesEnum.TEST.getCode()));
     boolean isDevProfile = environment.acceptsProfiles(Profiles.of(ProfilesEnum.DEV.getCode()));
@@ -57,21 +58,21 @@ public class DatabaseBean {
     } else if (isCfProfile && !cfEnv.isInCf()) {
       return new H2DBWorker();
     } else {
-      throw new ProfileNotSupportedException("Profile not supported. Supported are: test, dev, cf");
+      throw new ProfileNotSupportedException("Profile not supported. Use one of: test, dev, cf");
     }
   }
 
-  @Bean(name = "datasource")
+  @Bean(name = DatabaseConstants.BEAN_DATA_SOURCE)
   public DataSource createDataSource() {
-    DBWorker dbWorker = (DBWorker) applicationContext.getBean("dbWorker");
+    DBWorker dbWorker = (DBWorker) applicationContext.getBean(DatabaseConstants.BEAN_DB_WORKER);
     LOGGER.info("JPA DBWorker instanceof: {}", dbWorker.getClass().getName());
     DataSourceProperties dataSourceProperties = dbWorker.buildDataSourceProperties();
 
     return new DataSourceCreator().create(dataSourceProperties);
   }
 
-  @DependsOn("datasource")
-  @Bean(name = "entityManagerFactory")
+  @DependsOn(DatabaseConstants.BEAN_DATA_SOURCE)
+  @Bean(name = DatabaseConstants.BEAN_ENTITY_MANAGER_FACTORY)
   public LocalContainerEntityManagerFactoryBean createEntityManagerFactory(DataSource dataSource, DBWorker jpaConfigurationCreator) {
     LocalContainerEntityManagerFactoryBean entityManagerFactoryBean = new LocalContainerEntityManagerFactoryBean();
 

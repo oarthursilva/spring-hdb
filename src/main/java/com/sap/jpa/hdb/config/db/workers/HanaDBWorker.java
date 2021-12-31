@@ -3,9 +3,9 @@ package com.sap.jpa.hdb.config.db.workers;
 import org.hibernate.dialect.HANAColumnStoreDialect;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-
 import com.sap.jpa.hdb.config.db.models.dto.DataSourceProperties;
 import io.pivotal.cfenv.core.CfCredentials;
+import io.pivotal.cfenv.core.CfService;
 import io.pivotal.cfenv.jdbc.CfJdbcEnv;
 
 public class HanaDBWorker implements DBWorker {
@@ -28,9 +28,10 @@ public class HanaDBWorker implements DBWorker {
 
   @Override
   public DataSourceProperties buildDataSourceProperties() {
-    CfCredentials credentials = cfJdbcEnv.findCredentialsByTag(HANA_TAG);
+    CfService cfService = cfJdbcEnv.findAllServices().get(0);
+    CfCredentials credentials = cfService.getCredentials();
 
-    String url = credentials.getUri(HANA_TAG);
+    String url = credentials.getUriInfo().getUriString();
     String username = credentials.getUsername();
     String password = credentials.getPassword();
 

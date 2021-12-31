@@ -16,7 +16,7 @@ import lombok.Setter;
 @Getter
 @Setter
 @Entity
-@Table(name = "com.sap.jpa.hana.tables::products")
+@Table(name = "\"com.sap.jpa.hana.tables::products\"")
 public class Product implements SerializableEntity {
 
   @Id
